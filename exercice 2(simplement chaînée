@@ -3,7 +3,7 @@
 
 typedef struct Node {
     int data;
-    struct Node *next;
+    struct Node*next;
 } Node;
 
 Node* create_node(int value) {
@@ -13,21 +13,21 @@ Node* create_node(int value) {
     return new;
 }
 
-void insert_sorted(Node **head, int value) {
-    Node *new = create_node(value);
+void insert_sorted(Node**head, int value) {
+    Node*new = create_node(value);
     if (*head == NULL || (*head)->data >= value) {
         new->next = *head;
         *head = new;
         return;
     }
-    Node *current = *head;
+    Node*current = *head;
     while (current->next && current->next->data < value)
         current = current->next;
     new->next = current->next;
     current->next = new;
 }
 
-void print_list(Node *head) {
+void print_list(Node*head) {
     while (head) {
         printf("%d ", head->data);
         head = head->next;
@@ -36,11 +36,11 @@ void print_list(Node *head) {
 }
 
 int main() {
-    Node *head = NULL;
-    insert_sorted(&head, 10);
-    insert_sorted(&head, 5);
-    insert_sorted(&head, 20);
-    insert_sorted(&head, 15);
+    Node*head = NULL;
+    insert_sorted(&head,10);
+    insert_sorted(&head,5);
+    insert_sorted(&head,7);
+    insert_sorted(&head,32);
     print_list(head);
     return 0;
 }
